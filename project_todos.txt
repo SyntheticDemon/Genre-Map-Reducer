@@ -1,0 +1,21 @@
+1.The main process finds out how many genres exist and how many files
+2. it stores this information and passes them both to two processes we call the 
+    mapper processes and reducer proceses by first executing multiple forks to 
+    create mapper and reducers processes images and then execs their compiled object files
+    with their respective arguments 
+    -> 1. arguments for mapper process -> file name and genre names (You can simply pass an fd  and write to it from the main process the required arguments and don't have to pass arguments from the main)
+    -> 2. arguments for reducer process -> genre name and file names (You can simply pass an fd  and write to it from the main process the required arguments and don't have to pass arguments from the main)
+3.Mapper process ->
+    retrieves it's own file name and all the genre names
+    regarding it's file name it creates multiple named pipes with file names
+    in local directory with file  format name of file(its own file #).genre which contain the count of each seen genre in their respective files (The kv part is being done here) iterating over genres
+    it then exits leaving multiple processed files.
+    each mapper process prints it's evaluated stuff
+4. Reducer process -> 
+    retrives file count(stands for file name) 
+    extracts the genre name from the unnamed pipe's relative fd
+    regarding it's genre name it reads the named pipe for each file name 
+    and constructs the file to read from file#.(its own genre name) iterating over files 
+    each of the reducer processes print the total number after their execution with their process 
+    meta data
+
