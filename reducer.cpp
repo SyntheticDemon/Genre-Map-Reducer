@@ -9,13 +9,16 @@ using namespace std;
 #include <vector>
 #include <fstream>
 #include <sstream>
-#define BUFFER_LENGTH 1000
+#include "utils.h"
+
 int main(int argc ,char * argv[])
 {
-    char buffer[BUFFER_LENGTH];
-    cout <<"Genre file descritors" << argv[0] << argv[1] << endl;
-    close(atoi(argv[1]));
-    // read(atoi(argv[0]),buffer,sizeof(char)*BUFFER_LENGTH);
-    cout << buffer;
+    int read_fd=atoi(argv[0]);
+    int write_fd=atoi(argv[1]);
+    char buffer[CHAR_BUFFER_LENGTH];
+    cout <<"Reducer received file descritors" << read_fd << write_fd << endl;
+    close(write_fd);
+    read(read_fd,buffer,CHAR_BUFFER_LENGTH);
+    cout << "Reducer Read from pipe "<<buffer << endl;
     return 0;
 }
