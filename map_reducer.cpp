@@ -49,6 +49,7 @@ string form_named_message(vector<vector<string>> genres, int i, string file_dire
     temp_file_dir.append("/part");
     temp_file_dir.append(to_string(i));
     message.append(temp_file_dir);
+    message.append(".csv");
     message.append(",");
     return message;
 }
