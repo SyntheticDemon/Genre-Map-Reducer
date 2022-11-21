@@ -59,11 +59,9 @@ int main(int argc, char *argv[])
         int pid = fork();
         if (pid == 0)
         {
-            string temp = pipe_name;
-            temp.append(genre);
-            cout << temp << endl;
             close(write_fd);
-            execl("./reduce", to_string(pipe_util[READ]).c_str(), to_string(pipe_util[WRITE]).c_str(), temp.c_str(), (char *)0);
+            execl("./reduce_communicator", to_string(pipe_util[READ]).c_str(), to_string(pipe_util[WRITE]).c_str(),
+            to_string(file_count).c_str(), genre.c_str(), (char *)0);
             sleep(1);
             exit(0);
         }

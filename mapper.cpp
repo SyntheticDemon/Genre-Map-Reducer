@@ -47,51 +47,16 @@ std::map<string, int> return_counts(vector<vector<string>> file_contents)
 void dump_genres_to_respective_files(string file_no, vector<vector<string>> file_contents)
 {
     string processed = "processed";
-    std::map<std::string, int> genre_to_fd;
     map<string, int> counts = return_counts(file_contents);
-    cout << counts.find("History")->second << "History" << endl;
-    execl("./test", "./test", (char *)0);
-    for (int i = 0; i < file_contents.size(); i++)
+    int status;
+    int pipe_util[2];
+    int ret_value = pipe(pipe_util);
+    for (auto iter = counts.begin(); iter != counts.end(); ++iter)
     {
-        string book_name = file_contents[i][0];
-        for (int j = 1; j < file_contents[i].size(); j++)
-        {
-
-            // string temp_file = processed;
-            // string genre_name = file_contents[i][j];
-            // temp_file.append(genre_name);
-            // auto it = genre_to_fd.find(genre_name);
-            // int genre_fd = it->second;
-            // cout << "Genre fd " << genre_fd << endl;
-            // if (it == genre_to_fd.end())
-            // {
-            //     cout << "Opening fifo " << temp_file << endl;
-            //     int fifo_result = mkfifo(temp_file.c_str(), 0666);
-            //     std::cout << "errno " << errno << std::endl;
-            //     std::cout << "errno str::" << strerror(errno) << std::endl;
-            //     cout << "Opening fifo result : " << fifo_result << endl;
-            //     int fifo_fd = open(temp_file.c_str(), O_CREAT | O_APPEND | O_NONBLOCK);
-            //     if (fifo_fd > 0)
-            //     {
-
-            //         genre_to_fd.insert(make_pair(genre_name, fifo_fd));
-            //         cout << "Inserted received fd" << genre_to_fd.find(genre_name)->second << endl;
-            //     }
-            //     else
-            //     {
-            //         cout << "Could not open fifo and return it's fd" << endl;
-            //     }
-            // }
-            // else
-            // {
-            //     cout << "Fifo had already existed" << endl;
-            // }
-
-            // int shit = fork();
-            // int a =write(genre_fd, book_name.c_str(), book_name.size());
-            // cout << "Write comeleted"<< a << endl;
-            // temp_file.clear();
-        }
+        string genre= iter->first;
+        int count = iter->second;
+        cout <<" Count : " << count << " Genre "<< genre<<endl;
+        execl("./map_communicator", to_string(count).c_str(), genre.c_str(), (char *)0);
     }
 }
 
@@ -119,7 +84,6 @@ int main(int argc, char *argv[])
     int read_fd = atoi(argv[0]);
     int write_fd = atoi(argv[1]);
     vector<vector<string>> file_contents;
-    char ch;
     cout << "Mapper received file descritors " << read_fd << " " << write_fd << endl;
     vector<string> results = read_and_decode_message(read_fd);
     string where_to_read = results[results.size() - 1];
