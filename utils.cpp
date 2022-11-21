@@ -77,3 +77,16 @@ void read_csv(const string &csvSource, vector<vector<string>> &lines)
     if (line.size())
         lines.push_back(line);
 }
+void print_2d_vector(vector<vector<string>> &inp)
+{
+    for (int i = 0; i < inp.size(); i++)
+    {
+        for (int j = 0; j < inp[i].size(); j++)
+        {
+
+            cout << inp[i][j] << " ";
+        }
+        cout << endl;
+    }
+    return;
+}

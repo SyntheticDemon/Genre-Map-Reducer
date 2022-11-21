@@ -5,4 +5,5 @@
 #define READ 0
 #define WRITE 1
 void read_csv(const string &csvSource, vector<vector<string>> &lines);
+void print_2d_vector(vector<vector<string>> &inp);
 #endif

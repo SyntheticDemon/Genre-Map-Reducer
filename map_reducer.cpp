@@ -13,19 +13,6 @@ using namespace std;
 #include "string"
 #include "utils.h"
 
-void print_2d_vector(vector<vector<string>> &inp)
-{
-    for (int i = 0; i < inp.size(); i++)
-    {
-        for (int j = 0; j < inp[i].size(); j++)
-        {
-
-            cout << inp[i][j];
-        }
-        cout << endl;
-    }
-    return;
-}
 string vec_to_csv(vector<vector<string>> v)
 {
     string result_string;
@@ -40,7 +27,7 @@ string vec_to_csv(vector<vector<string>> v)
     return result_string;
 }
 
-string form_named_message(vector<vector<string>> genres, int i, string file_directory)
+string form_mapping_message(vector<vector<string>> genres, int i, string file_directory)
 {
     string message = vec_to_csv(genres);
     message.append(to_string(i));
@@ -50,6 +37,15 @@ string form_named_message(vector<vector<string>> genres, int i, string file_dire
     temp_file_dir.append(to_string(i));
     message.append(temp_file_dir);
     message.append(".csv");
+    message.append(",");
+    return message;
+}
+string form_reducing_message(string genre, int file_count)
+{
+    string message;
+    message.append(genre);
+    message.append(",");
+    message.append(to_string(file_count));
     message.append(",");
     return message;
 }
@@ -93,23 +89,42 @@ int main(int argsc, char *argv[])
         file_count = count_part_files_in_dir(file_directory) - 3;
         status = 0;
     }
-    for (auto i = 1; i <= file_count; i++)
+    for (auto i = 0; i < genres[0].size(); i++)
     {
         int pipe_util[2];
-
         int ret_value = pipe(pipe_util);
         if (ret_value == 0)
         {
             pid = fork();
             if (pid == 0)
             {
-                sleep(1);
-                execl("./mapper", to_string(pipe_util[READ]).c_str(), to_string(pipe_util[WRITE]).c_str(), (char *)0);
+                execl("./reducer", to_string(pipe_util[READ]).c_str(), to_string(pipe_util[WRITE]).c_str(), (char *)0);
                 exit(0);
             }
             else
             {
-                string message = form_named_message(genres, i, file_directory);
+                string message = form_reducing_message(genres[0][i], file_count);
+                write(pipe_util[WRITE], message.c_str(), message.size());
+                close(pipe_util[READ]);
+            }
+        }
+    }
+    for (auto i = 1; i <= file_count; i++)
+    {
+        int pipe_util[2];
+        int ret_value = pipe(pipe_util);
+        if (ret_value == 0)
+        {
+            pid = fork();
+            if (pid == 0)
+            {
+                execl("./mapper", to_string(pipe_util[READ]).c_str(), to_string(pipe_util[WRITE]).c_str(), (char *)0);
+                sleep(1);
+                exit(0);
+            }
+            else
+            {
+                string message = form_mapping_message(genres, i, file_directory);
                 write(pipe_util[WRITE], message.c_str(), message.size());
                 close(pipe_util[READ]);
                 cout << "Waiting" << endl;
@@ -117,36 +132,5 @@ int main(int argsc, char *argv[])
             }
         }
     }
-    // for (auto i = 1; i <= genres[0].size(); i++)
-    // {
-
-    //     int pipe_util[2];
-    //     int ret_value = pipe(pipe_util);
-    //     if (ret_value == 0)
-    //     {
-    //         pid = fork();
-    //         if (pid == 0)
-    //         {
-    //             sleep(2);
-    //             execl("./reducer", to_string(pipe_util[READ]).c_str(), to_string(pipe_util[WRITE]).c_str(), (char *)0);
-    //             // string temp = "parts";
-    //             // temp.append(to_string(i));
-    //             // cout << temp;
-    //             exit(0);
-    //         }
-    //         else
-    //         {
-    //             close(pipe_util[READ]);
-
-    //             cout << "Waiting" << endl;
-    //             // cout <<"Waiting \n";
-    //             wait(&status);
-    //         }
-    //     }
-    //     else
-    //     {
-    //         cout << "Big Failure";
-    //     }
-    // }
     return 1;
 }

@@ -1,3 +1,4 @@
+
 using namespace std;
 #include <iostream>
 #include <stdlib.h>
@@ -13,37 +14,83 @@ using namespace std;
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <unistd.h>
+#include <string.h>
+#include <errno.h>
 #include "utils.h"
+#include <iterator>
+#include <map>
+
 #define BUFFER_LENGTH 10000
 #define READ 0
 #define WRITE 1
-void dump_genres_to_respective_files(string file_no, vector<vector<string>> file_contents)
+std::map<string, int> return_counts(vector<vector<string>> file_contents)
 {
-    string processed = "processed";
+    map<string, int> counts;
+
     for (int i = 0; i < file_contents.size(); i++)
     {
-        string temp_file = processed;
-        temp_file.append(file_no);
-        string book_name = file_contents[i][0];
         for (int j = 1; j < file_contents[i].size(); j++)
         {
-            string genre_name = file_contents[i][j];
-            string full_file_name = temp_file.append(genre_name);
-            cout << "Opening fifo" << endl;
-            mkfifo(full_file_name.c_str(), 0666);
-            cout << "Opening file" << endl;
-            int fifo_fd = open(full_file_name.c_str(), O_APPEND | O_NONBLOCK);
-            int shit = fork();
-            if (shit == 0)
-            {   execl("./a.out","a.out",(char *)0);
-                exit(0);
+            auto it = counts.find(file_contents[i][j]);
+            if (it == counts.end())
+            {
+                counts.insert(make_pair(file_contents[i][j], 0));
             }
             else
             {
-                write(fifo_fd, file_contents[i][0].c_str(), file_contents[i][j].size());
+                it->second++;
             }
+        }
+    }
+    return counts;
+}
+void dump_genres_to_respective_files(string file_no, vector<vector<string>> file_contents)
+{
+    string processed = "processed";
+    std::map<std::string, int> genre_to_fd;
+    map<string, int> counts = return_counts(file_contents);
+    cout << counts.find("History")->second << "History" << endl;
+    execl("./test", "./test", (char *)0);
+    for (int i = 0; i < file_contents.size(); i++)
+    {
+        string book_name = file_contents[i][0];
+        for (int j = 1; j < file_contents[i].size(); j++)
+        {
 
-            cout << "Write comeleted" << endl;
+            // string temp_file = processed;
+            // string genre_name = file_contents[i][j];
+            // temp_file.append(genre_name);
+            // auto it = genre_to_fd.find(genre_name);
+            // int genre_fd = it->second;
+            // cout << "Genre fd " << genre_fd << endl;
+            // if (it == genre_to_fd.end())
+            // {
+            //     cout << "Opening fifo " << temp_file << endl;
+            //     int fifo_result = mkfifo(temp_file.c_str(), 0666);
+            //     std::cout << "errno " << errno << std::endl;
+            //     std::cout << "errno str::" << strerror(errno) << std::endl;
+            //     cout << "Opening fifo result : " << fifo_result << endl;
+            //     int fifo_fd = open(temp_file.c_str(), O_CREAT | O_APPEND | O_NONBLOCK);
+            //     if (fifo_fd > 0)
+            //     {
+
+            //         genre_to_fd.insert(make_pair(genre_name, fifo_fd));
+            //         cout << "Inserted received fd" << genre_to_fd.find(genre_name)->second << endl;
+            //     }
+            //     else
+            //     {
+            //         cout << "Could not open fifo and return it's fd" << endl;
+            //     }
+            // }
+            // else
+            // {
+            //     cout << "Fifo had already existed" << endl;
+            // }
+
+            // int shit = fork();
+            // int a =write(genre_fd, book_name.c_str(), book_name.size());
+            // cout << "Write comeleted"<< a << endl;
+            // temp_file.clear();
         }
     }
 }
@@ -85,6 +132,7 @@ int main(int argc, char *argv[])
     string_stream << input_file.rdbuf();
     string contents_str = string_stream.str();
     read_csv(&contents_str[0], file_contents);
+
     dump_genres_to_respective_files(file_no, file_contents);
     close(write_fd);
 
