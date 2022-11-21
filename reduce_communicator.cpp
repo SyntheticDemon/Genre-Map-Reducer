@@ -26,24 +26,26 @@ int main(int argc, char *argv[])
     int file_count = atoi(argv[2]);
     char buffer[CHAR_BUFFER_LENGTH];
     string file_path(argv[3]);
-    cout << "Reducer Communicator received file descritors " << read_fd << " " << write_fd << " " << file_path << " " <<file_count << " " << endl;
+    // cout << "Reducer Communicator received file descritors "
+    //  << read_fd << " " << write_fd << " " << file_path << " " << file_count << " " << endl;
     file_path.append("processed");
     mkfifo(file_path.c_str(), 0666);
     int received_messages_count = 0;
-    while (1)
-    {
-        char arr1[80];
-        fd = open(file_path.c_str(), O_RDONLY);
-        read(fd, arr1, sizeof(arr1));
-        received_messages_count++;
-        printf("Mapper : %s\n", arr1);
+    vector<int> received_counts;
+    int count_sum = 0;
+    fd = open(file_path.c_str(), O_RDONLY);
 
-        close(fd);
-        if (received_messages_count == file_count)
-        {
-            cout << "Received all messages" << endl;
-            break;
-        }
-    }
+    char arr1[80];
+    received_messages_count++;
+
+    read(fd, arr1, sizeof(arr1));
+    cout << "Result : " << arr1 << endl;
+
+    // for (int i = 0; i < received_counts.size(); i++)
+    // {
+        // count_sum = count_sum + received_counts[i];
+    // }
+
+    cout << "Genre : " << file_path << " Count of books with this genre in the directory " << count_sum << endl;
     return 0;
 }

@@ -26,7 +26,6 @@ using namespace std;
 std::map<string, int> return_counts(vector<vector<string>> file_contents)
 {
     map<string, int> counts;
-
     for (int i = 0; i < file_contents.size(); i++)
     {
         for (int j = 1; j < file_contents[i].size(); j++)
@@ -34,7 +33,7 @@ std::map<string, int> return_counts(vector<vector<string>> file_contents)
             auto it = counts.find(file_contents[i][j]);
             if (it == counts.end())
             {
-                counts.insert(make_pair(file_contents[i][j], 0));
+                counts.insert(make_pair(file_contents[i][j], 1));
             }
             else
             {
@@ -44,6 +43,7 @@ std::map<string, int> return_counts(vector<vector<string>> file_contents)
     }
     return counts;
 }
+
 void dump_genres_to_respective_files(string file_no, vector<vector<string>> file_contents)
 {
     string processed = "processed";
@@ -53,10 +53,19 @@ void dump_genres_to_respective_files(string file_no, vector<vector<string>> file
     int ret_value = pipe(pipe_util);
     for (auto iter = counts.begin(); iter != counts.end(); ++iter)
     {
-        string genre= iter->first;
+        string genre = iter->first;
         int count = iter->second;
-        cout <<" Count : " << count << " Genre "<< genre<<endl;
-        execl("./map_communicator", to_string(count).c_str(), genre.c_str(), (char *)0);
+        int fork_return = fork();
+        if (fork_return == 0)
+        {
+            execl("./map_communicator", to_string(count).c_str(), genre.c_str(), (char *)0);
+            exit(0);
+        }
+        // else
+        // {
+        //     cout << "Key : " << iter->first << " Value " << iter->second << " File number " << file_no << endl;
+        //     cout << "File number : " << file_no << " Count : " << count << " Genre " << genre << endl;
+        // }
     }
 }
 
@@ -84,11 +93,12 @@ int main(int argc, char *argv[])
     int read_fd = atoi(argv[0]);
     int write_fd = atoi(argv[1]);
     vector<vector<string>> file_contents;
-    cout << "Mapper received file descritors " << read_fd << " " << write_fd << endl;
+    print_2d_vector(file_contents);
+    // cout << "Mapper received file descritors " << read_fd << " " << write_fd << endl;
     vector<string> results = read_and_decode_message(read_fd);
     string where_to_read = results[results.size() - 1];
     string file_no = results[results.size() - 2];
-    cout << "Reading file no : " << file_no << " Where to read :" << where_to_read << endl;
+    // cout << "Reading file no : " << file_no << " Where to read :" << where_to_read << endl;
     ifstream input_file;
 
     input_file.open(where_to_read);

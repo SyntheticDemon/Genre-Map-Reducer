@@ -46,7 +46,7 @@ int main(int argc, char *argv[])
     int read_fd = atoi(argv[0]);
     int write_fd = atoi(argv[1]);
     char buffer[CHAR_BUFFER_LENGTH];
-    cout << "Reducer received file descritors " << read_fd << " " << write_fd << endl;
+    // cout << "Reducer received file descritors " << read_fd << " " << write_fd << endl;
     vector<string> decoded_response = read_and_decode_message(read_fd);
     string genre = decoded_response[decoded_response.size() - 2];
     int file_count = stoi(decoded_response[decoded_response.size() - 1]);
@@ -62,13 +62,12 @@ int main(int argc, char *argv[])
             close(write_fd);
             execl("./reduce_communicator", to_string(pipe_util[READ]).c_str(), to_string(pipe_util[WRITE]).c_str(),
             to_string(file_count).c_str(), genre.c_str(), (char *)0);
-            sleep(1);
             exit(0);
         }
         else
         {
             close(pipe_util[WRITE]);
-            cout << "Waiting" << endl;
+            // cout << "Waiting" << endl;
         }
     }
 

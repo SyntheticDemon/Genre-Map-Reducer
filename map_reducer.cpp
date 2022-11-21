@@ -106,6 +106,7 @@ int main(int argsc, char *argv[])
                 string message = form_reducing_message(genres[0][i], file_count);
                 write(pipe_util[WRITE], message.c_str(), message.size());
                 close(pipe_util[READ]);
+                wait(&status);
             }
         }
     }
@@ -119,7 +120,6 @@ int main(int argsc, char *argv[])
             if (pid == 0)
             {
                 execl("./mapper", to_string(pipe_util[READ]).c_str(), to_string(pipe_util[WRITE]).c_str(), (char *)0);
-                sleep(1);
                 exit(0);
             }
             else
@@ -127,8 +127,7 @@ int main(int argsc, char *argv[])
                 string message = form_mapping_message(genres, i, file_directory);
                 write(pipe_util[WRITE], message.c_str(), message.size());
                 close(pipe_util[READ]);
-                cout << "Waiting" << endl;
-                wait(&status); // Does not work in parallel
+                wait(&status);
             }
         }
     }
