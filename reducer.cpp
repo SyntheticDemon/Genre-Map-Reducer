@@ -38,7 +38,7 @@ int main(int argc, char *argv[])
     vector<string> decoded_response = read_and_decode_pipe_message(read_fd);
     string genre = decoded_response[decoded_response.size() - 2];
     int file_count = stoi(decoded_response[decoded_response.size() - 1]);
-    string pipe_name = "processed";
+    string pipe_name = "/tmp/processed";
     int status;
     vector<int> received_count;
     for (int i = 1; i < file_count; i++)
@@ -68,6 +68,7 @@ int main(int argc, char *argv[])
             close(write_fd);
         }
     }
+    
     int zero = 0;
     for (int i = 0; i < received_count.size(); i++)
     {

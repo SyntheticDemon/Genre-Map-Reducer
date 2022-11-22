@@ -76,8 +76,7 @@ int main(int argsc, char *argv[])
     vector<vector<string>> genres;
     if (pid != 0)
     {
-        // file_directory = argv[1];
-        file_directory = "library";
+        file_directory = argv[1];
         temp = file_directory;
         genres_loc = temp.append("/genres.csv");
         ifstream inFile;

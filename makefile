@@ -11,4 +11,4 @@ reduce_communicator : reduce_communicator.cpp utils.cpp
 	g++ reduce_communicator.cpp utils.cpp -o reduce_communicator
 .PHONY: clean
 clean:
-	rm mapper *processed* reducer map_reducer map_communicator reduce_communicator
+	rm mapper /tmp/processed* reducer map_reducer map_communicator reduce_communicator

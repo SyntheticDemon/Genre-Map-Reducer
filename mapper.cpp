@@ -45,7 +45,7 @@ std::map<string, int> return_counts(vector<vector<string>> file_contents, vector
 
 void dump_genres_to_respective_files(string file_no, vector<vector<string>> file_contents,vector<string> genres)
 {
-    string processed = "processed";
+    string processed = "/tmp/processed";
     map<string, int> counts = return_counts(file_contents, genres);
     int status;
     int pipe_util[2];
