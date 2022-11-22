@@ -89,27 +89,6 @@ int main(int argsc, char *argv[])
         file_count = count_part_files_in_dir(file_directory) - 3;
         status = 0;
     }
-    for (auto i = 0; i < genres[0].size(); i++)
-    {
-        int pipe_util[2];
-        int ret_value = pipe(pipe_util);
-        if (ret_value == 0)
-        {
-            pid = fork();
-            if (pid == 0)
-            {
-                execl("./reducer", to_string(pipe_util[READ]).c_str(), to_string(pipe_util[WRITE]).c_str(), (char *)0);
-                exit(0);
-            }
-            else
-            {
-                string message = form_reducing_message(genres[0][i], file_count);
-                write(pipe_util[WRITE], message.c_str(), message.size());
-                close(pipe_util[READ]);
-                wait(&status);
-            }
-        }
-    }
     for (auto i = 1; i <= file_count; i++)
     {
         int pipe_util[2];
@@ -131,5 +110,27 @@ int main(int argsc, char *argv[])
             }
         }
     }
+    for (auto i = 0; i < genres[0].size(); i++)
+    {
+        int pipe_util[2];
+        int ret_value = pipe(pipe_util);
+        if (ret_value == 0)
+        {
+            pid = fork();
+            if (pid == 0)
+            {
+                execl("./reducer", to_string(pipe_util[READ]).c_str(), to_string(pipe_util[WRITE]).c_str(), (char *)0);
+                exit(0);
+            }
+            else
+            {
+                string message = form_reducing_message(genres[0][i], file_count);
+                write(pipe_util[WRITE], message.c_str(), message.size());
+                close(pipe_util[READ]);
+                wait(&status);
+            }
+        }
+    }
+
     return 1;
 }

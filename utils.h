@@ -6,4 +6,5 @@
 #define WRITE 1
 void read_csv(const string &csvSource, vector<vector<string>> &lines);
 void print_2d_vector(vector<vector<string>> &inp);
+vector<string> read_and_decode_pipe_message(int fd);
 #endif

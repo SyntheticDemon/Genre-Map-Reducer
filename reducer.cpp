@@ -14,6 +14,12 @@ using namespace std;
 #include <sys/types.h>
 #include <filesystem>
 
+bool does_file_exist(const char *file_name)
+{
+    std::ifstream infile(file_name);
+    return infile.good();
+}
+
 bool is_fifo(const char *path)
 {
     std::error_code ec;
@@ -23,53 +29,51 @@ bool is_fifo(const char *path)
     return res;
 }
 
-vector<string> read_and_decode_message(int fd)
-{
-    char buffer[CHAR_BUFFER_LENGTH] = {0};
-    vector<string> decoded_messages;
-    char ch;
-    read(fd, buffer, CHAR_BUFFER_LENGTH);
-    std::string s = buffer;
-    auto start = 0U;
-    string delim = ",";
-    auto end = s.find(delim);
-    while (end != std::string::npos)
-    {
-        decoded_messages.push_back(s.substr(start, end - start));
-        start = end + delim.length();
-        end = s.find(delim, start);
-    }
-    return decoded_messages;
-}
 int main(int argc, char *argv[])
 {
     int read_fd = atoi(argv[0]);
     int write_fd = atoi(argv[1]);
     char buffer[CHAR_BUFFER_LENGTH];
     // cout << "Reducer received file descritors " << read_fd << " " << write_fd << endl;
-    vector<string> decoded_response = read_and_decode_message(read_fd);
+    vector<string> decoded_response = read_and_decode_pipe_message(read_fd);
     string genre = decoded_response[decoded_response.size() - 2];
     int file_count = stoi(decoded_response[decoded_response.size() - 1]);
     string pipe_name = "processed";
     int status;
-    int pipe_util[2];
-    int ret_value = pipe(pipe_util);
-    if (ret_value == 0)
+    vector<int> received_count;
+    for (int i = 1; i < file_count; i++)
     {
+        int status;
+        int pipe_util[2];
+        int ret_value = pipe(pipe_util);
         int pid = fork();
         if (pid == 0)
         {
-            close(write_fd);
+            string file_dir = pipe_name;
+            string comm;
+            file_dir.append(to_string(i));
+            file_dir.append(genre);
             execl("./reduce_communicator", to_string(pipe_util[READ]).c_str(), to_string(pipe_util[WRITE]).c_str(),
-            to_string(file_count).c_str(), genre.c_str(), (char *)0);
+                  file_dir.c_str(),
+                  (char *)0);
             exit(0);
         }
         else
         {
-            close(pipe_util[WRITE]);
-            // cout << "Waiting" << endl;
+            wait(&status);
+            char buffer[80];
+            read(pipe_util[READ], buffer, sizeof(buffer));
+            // cout << "Received count from reduce communicator " << buffer << endl;
+            received_count.push_back(atoi(buffer));
+            close(write_fd);
         }
     }
+    int zero = 0;
+    for (int i = 0; i < received_count.size(); i++)
+    {
+        zero = zero + received_count[i];
+    }
+    cout << "Genre reducer final result " << genre << " " << zero << endl;
 
     return 0;
 }

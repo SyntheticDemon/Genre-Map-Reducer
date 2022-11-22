@@ -90,3 +90,22 @@ void print_2d_vector(vector<vector<string>> &inp)
     }
     return;
 }
+
+vector<string> read_and_decode_pipe_message(int fd)
+{
+    char buffer[CHAR_BUFFER_LENGTH] = {0};
+    vector<string> decoded_messages;
+    char ch;
+    read(fd, buffer, CHAR_BUFFER_LENGTH);
+    std::string s = buffer;
+    auto start = 0U;
+    string delim = ",";
+    auto end = s.find(delim);
+    while (end != std::string::npos)
+    {
+        decoded_messages.push_back(s.substr(start, end - start));
+        start = end + delim.length();
+        end = s.find(delim, start);
+    }
+    return decoded_messages;
+}

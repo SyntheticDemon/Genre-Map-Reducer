@@ -23,31 +23,30 @@ using namespace std;
 #define BUFFER_LENGTH 10000
 #define READ 0
 #define WRITE 1
-std::map<string, int> return_counts(vector<vector<string>> file_contents)
+std::map<string, int> return_counts(vector<vector<string>> file_contents, vector<string> genres)
+
 {
     map<string, int> counts;
+    for (int i = 0; i < genres.size(); i++)
+    {
+        counts.insert(make_pair(genres[i], 0));
+    }
+
     for (int i = 0; i < file_contents.size(); i++)
     {
         for (int j = 1; j < file_contents[i].size(); j++)
         {
             auto it = counts.find(file_contents[i][j]);
-            if (it == counts.end())
-            {
-                counts.insert(make_pair(file_contents[i][j], 1));
-            }
-            else
-            {
-                it->second++;
-            }
+            it->second++;
         }
     }
     return counts;
 }
 
-void dump_genres_to_respective_files(string file_no, vector<vector<string>> file_contents)
+void dump_genres_to_respective_files(string file_no, vector<vector<string>> file_contents,vector<string> genres)
 {
     string processed = "processed";
-    map<string, int> counts = return_counts(file_contents);
+    map<string, int> counts = return_counts(file_contents, genres);
     int status;
     int pipe_util[2];
     int ret_value = pipe(pipe_util);
@@ -58,9 +57,14 @@ void dump_genres_to_respective_files(string file_no, vector<vector<string>> file
         int fork_return = fork();
         if (fork_return == 0)
         {
-            execl("./map_communicator", to_string(count).c_str(), genre.c_str(), (char *)0);
+            string temp = processed;
+            temp.append(file_no);
+            temp.append(genre);
+            // cout << "Calling the map communicator with arguments " << count << " " << temp << endl;
+            execl("./map_communicator", to_string(count).c_str(), temp.c_str(), (char *)0);
             exit(0);
         }
+
         // else
         // {
         //     cout << "Key : " << iter->first << " Value " << iter->second << " File number " << file_no << endl;
@@ -69,25 +73,6 @@ void dump_genres_to_respective_files(string file_no, vector<vector<string>> file
     }
 }
 
-vector<string> read_and_decode_message(int fd)
-{
-    char buffer[BUFFER_LENGTH] = {0};
-    vector<string> decoded_messages;
-    char ch;
-    read(fd, buffer, BUFFER_LENGTH);
-    std::string s = buffer;
-
-    auto start = 0U;
-    string delim = ",";
-    auto end = s.find(delim);
-    while (end != std::string::npos)
-    {
-        decoded_messages.push_back(s.substr(start, end - start));
-        start = end + delim.length();
-        end = s.find(delim, start);
-    }
-    return decoded_messages;
-}
 int main(int argc, char *argv[])
 {
     int read_fd = atoi(argv[0]);
@@ -95,9 +80,15 @@ int main(int argc, char *argv[])
     vector<vector<string>> file_contents;
     print_2d_vector(file_contents);
     // cout << "Mapper received file descritors " << read_fd << " " << write_fd << endl;
-    vector<string> results = read_and_decode_message(read_fd);
+    vector<string> results = read_and_decode_pipe_message(read_fd);
     string where_to_read = results[results.size() - 1];
     string file_no = results[results.size() - 2];
+    vector<string> genres;
+    for (int i = 0; i < results.size() - 2; i++)
+    {
+        genres.push_back(results[i]);
+    }
+
     // cout << "Reading file no : " << file_no << " Where to read :" << where_to_read << endl;
     ifstream input_file;
 
@@ -107,7 +98,7 @@ int main(int argc, char *argv[])
     string contents_str = string_stream.str();
     read_csv(&contents_str[0], file_contents);
 
-    dump_genres_to_respective_files(file_no, file_contents);
+    dump_genres_to_respective_files(file_no, file_contents, genres);
     close(write_fd);
 
     return 0;
