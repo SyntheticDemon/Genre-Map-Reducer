@@ -1,0 +1,247 @@
+Reading file no : 5 Where to read :lib/part5.csv
+Reading file no : 7 Where to read :lib/part7.csv
+Reading file no : 8 Where to read :lib/part8.csv
+Reading file no : 4 Where to read :lib/part4.csv
+Reading file no : 3 Where to read :lib/part3.csv
+Reading file no : 2 Where to read :lib/part2.csv
+Reading file no : 1 Where to read :lib/part1.csv
+Calling the map communicator with arguments 0 /tmp/processed7Textbook
+Reading file no : 14 Where to read :lib/part14.csv
+Reading file no : 13 Where to read :lib/part13.csv
+Calling the map communicator with arguments 0 /tmp/processed7Novel
+Reading file no : 6 Where to read :lib/part6.csv
+Calling the map communicator with arguments 0 /tmp/processed3Philosophy
+Calling the map communicator with arguments 0 /tmp/processed3Satire
+Calling the map communicator with arguments 0 /tmp/processed3Science
+Calling the map communicator with arguments 1 /tmp/processed8History
+Calling the map communicator with arguments 1 /tmp/processed7History
+Calling the map communicator with arguments 0 /tmp/processed3Textbook
+Reading file no : 10 Where to read :lib/part10.csv
+Calling the map communicator with arguments 0 /tmp/processed3Fiction
+Calling the map communicator with arguments 0 /tmp/processed14Novel
+Calling the map communicator with arguments 1 /tmp/processed3History
+Calling the map communicator with arguments 0 /tmp/processed2Satire
+Calling the map communicator with arguments 0 /tmp/processed13Fiction
+Calling the map communicator with arguments 0 /tmp/processed14Philosophy
+Calling the map communicator with arguments 0 /tmp/processed2Science
+Calling the map communicator with arguments 0 /tmp/processed7Philosophy
+Calling the map communicator with arguments 1 /tmp/processed5History
+Calling the map communicator with arguments 0 /tmp/processed7Fiction
+Reading file no : 11 Where to read :lib/part11.csv
+Calling the map communicator with arguments 1 /tmp/processed13History
+Calling the map communicator with arguments 0 /tmp/processed2Textbook
+Calling the map communicator with arguments 1 /tmp/processed2History
+Reading file no : 15 Where to read :lib/part15.csv
+Calling the map communicator with arguments 0 /tmp/processed6Philosophy
+Calling the map communicator with arguments 0 /tmp/processed8Fiction
+Calling the map communicator with arguments 1 /tmp/processed4Fiction
+Calling the map communicator with arguments 0 /tmp/processed2Novel
+Calling the map communicator with arguments 1 /tmp/processed6History
+Calling the map communicator with arguments 0 /tmp/processed4Novel
+Calling the map communicator with arguments 0 /tmp/processed1Novel
+Calling the map communicator with arguments 0 /tmp/processed13Novel
+Calling the map communicator with arguments 0 /tmp/processed6Satire
+Calling the map communicator with arguments 0 /tmp/processed4Philosophy
+Calling the map communicator with arguments 0 /tmp/processed5Satire
+Calling the map communicator with arguments 0 /tmp/processed13Philosophy
+Calling the map communicator with arguments 0 /tmp/processed8Textbook
+Calling the map communicator with arguments 0 /tmp/processed1Satire
+Calling the map communicator with arguments 0 /tmp/processed1Philosophy
+Calling the map communicator with arguments 1 /tmp/processed10History
+Calling the map communicator with arguments 0 /tmp/processed8Science
+Calling the map communicator with arguments 0 /tmp/processed8Satire
+Calling the map communicator with arguments 0 /tmp/processed6Science
+Calling the map communicator with arguments 0 /tmp/processed1Fiction
+Calling the map communicator with arguments 0 /tmp/processed13Textbook
+Calling the map communicator with arguments 0 /tmp/processed14Satire
+Calling the map communicator with arguments 0 /tmp/processed14Fiction
+Calling the map communicator with arguments 0 /tmp/processed7Satire
+Reading file no : 12 Where to read :lib/part12.csv
+Calling the map communicator with arguments 1 /tmp/processed1History
+Calling the map communicator with arguments 0 /tmp/processed6Novel
+Calling the map communicator with arguments 0 /tmp/processed15Philosophy
+Calling the map communicator with arguments 1 /tmp/processed14History
+Calling the map communicator with arguments 0 /tmp/processed5Science
+Calling the map communicator with arguments 0 /tmp/processed11Science
+Calling the map communicator with arguments 0 /tmp/processed10Novel
+Calling the map communicator with arguments 0 /tmp/processed13Science
+Calling the map communicator with arguments 0 /tmp/processed2Philosophy
+Calling the map communicator with arguments 0 /tmp/processed8Novel
+Calling the map communicator with arguments 0 /tmp/processed4Textbook
+Calling the map communicator with arguments 0 /tmp/processed6Fiction
+Calling the map communicator with arguments 0 /tmp/processed3Novel
+Reading file no : 9 Where to read :lib/part9.csv
+Calling the map communicator with arguments 0 /tmp/processed5Fiction
+Calling the map communicator with arguments 0 /tmp/processed10Science
+Calling the map communicator with arguments 0 /tmp/processed6Textbook
+Calling the map communicator with arguments 0 /tmp/processed12Novel
+Calling the map communicator with arguments 1 /tmp/processed15History
+Reading file no : 16 Where to read :lib/part16.csv
+Calling the map communicator with arguments 0 /tmp/processed10Textbook
+Calling the map communicator with arguments 0 /tmp/processed4Satire
+Calling the map communicator with arguments 0 /tmp/processed9Science
+Calling the map communicator with arguments 0 /tmp/processed7Science
+Calling the map communicator with arguments 0 /tmp/processed1Science
+Calling the map communicator with arguments 0 /tmp/processed1Textbook
+Calling the map communicator with arguments 0 /tmp/processed15Fiction
+Calling the map communicator with arguments 1 /tmp/processed11History
+Calling the map communicator with arguments 0 /tmp/processed5Textbook
+Calling the map communicator with arguments 0 /tmp/processed9Novel
+Calling the map communicator with arguments 0 /tmp/processed16Novel
+Calling the map communicator with arguments 0 /tmp/processed11Textbook
+Calling the map communicator with arguments 0 /tmp/processed12Philosophy
+Calling the map communicator with arguments 1 /tmp/processed9History
+Calling the map communicator with arguments 0 /tmp/processed13Satire
+Calling the map communicator with arguments 0 /tmp/processed16Philosophy
+Calling the map communicator with arguments 0 /tmp/processed16Fiction
+Received message count: 0 From pipe/tmp/processed1Philosophy
+Calling the map communicator with arguments 0 /tmp/processed16Science
+Calling the map communicator with arguments 0 /tmp/processed9Fiction
+Calling the map communicator with arguments 0 /tmp/processed14Science
+Calling the map communicator with arguments 0 /tmp/processed5Novel
+Calling the map communicator with arguments 0 /tmp/processed5Philosophy
+Calling the map communicator with arguments 0 /tmp/processed10Fiction
+Calling the map communicator with arguments 0 /tmp/processed9Satire
+Calling the map communicator with arguments 0 /tmp/processed15Satire
+Received message count: 0 From pipe/tmp/processed1Novel
+Calling the map communicator with arguments 0 /tmp/processed15Science
+Calling the map communicator with arguments 0 /tmp/processed12Fiction
+Calling the map communicator with arguments 1 /tmp/processed2Fiction
+Calling the map communicator with arguments 0 /tmp/processed11Philosophy
+Calling the map communicator with arguments 0 /tmp/processed11Satire
+Calling the map communicator with arguments 0 /tmp/processed14Textbook
+Received message count: 0 From pipe/tmp/processed1Textbook
+Calling the map communicator with arguments 1 /tmp/processed12History
+Received message count: 1 From pipe/tmp/processed1History
+Received message count: 0 From pipe/tmp/processed1Fiction
+Received message count: 0 From pipe/tmp/processed1Science
+Calling the map communicator with arguments 0 /tmp/processed10Satire
+Calling the map communicator with arguments 0 /tmp/processed4History
+Received message count: 0 From pipe/tmp/processed1Satire
+Received message count: 0 From pipe/tmp/processed2Textbook
+Calling the map communicator with arguments 0 /tmp/processed12Science
+Received message count: 0 From pipe/tmp/processed2Philosophy
+Calling the map communicator with arguments 0 /tmp/processed11Fiction
+Calling the map communicator with arguments 0 /tmp/processed12Satire
+Calling the map communicator with arguments 0 /tmp/processed15Novel
+Received message count: 0 From pipe/tmp/processed2Science
+Calling the map communicator with arguments 0 /tmp/processed8Philosophy
+Received message count: 1 From pipe/tmp/processed2History
+Calling the map communicator with arguments 0 /tmp/processed11Novel
+Calling the map communicator with arguments 0 /tmp/processed9Philosophy
+Calling the map communicator with arguments 0 /tmp/processed16Satire
+Calling the map communicator with arguments 1 /tmp/processed16History
+Calling the map communicator with arguments 0 /tmp/processed12Textbook
+Received message count: 0 From pipe/tmp/processed3Philosophy
+Calling the map communicator with arguments 0 /tmp/processed16Textbook
+Received message count: 1 From pipe/tmp/processed2Fiction
+Calling the map communicator with arguments 0 /tmp/processed9Textbook
+Calling the map communicator with arguments 0 /tmp/processed10Philosophy
+Received message count: 0 From pipe/tmp/processed3Textbook
+Received message count: 0 From pipe/tmp/processed2Satire
+Received message count: 0 From pipe/tmp/processed2Novel
+Received message count: 0 From pipe/tmp/processed3Fiction
+Received message count: 1 From pipe/tmp/processed3History
+Received message count: 0 From pipe/tmp/processed3Novel
+Received message count: 0 From pipe/tmp/processed3Satire
+Received message count: 0 From pipe/tmp/processed4Philosophy
+Received message count: 0 From pipe/tmp/processed3Science
+Received message count: 0 From pipe/tmp/processed4History
+Received message count: 0 From pipe/tmp/processed4Novel
+Received message count: 0 From pipe/tmp/processed4Satire
+Received message count: 0 From pipe/tmp/processed4Textbook
+Calling the map communicator with arguments 0 /tmp/processed4Science
+Calling the map communicator with arguments 0 /tmp/processed15Textbook
+Received message count: 0 From pipe/tmp/processed5Novel
+Received message count: 1 From pipe/tmp/processed4Fiction
+Received message count: 0 From pipe/tmp/processed5Philosophy
+Received message count: 1 From pipe/tmp/processed5History
+Received message count: 0 From pipe/tmp/processed4Science
+Received message count: 0 From pipe/tmp/processed5Textbook
+Received message count: 0 From pipe/tmp/processed5Fiction
+Received message count: 0 From pipe/tmp/processed6Philosophy
+Received message count: 0 From pipe/tmp/processed5Satire
+Received message count: 0 From pipe/tmp/processed6Novel
+Received message count: 1 From pipe/tmp/processed6History
+Received message count: 0 From pipe/tmp/processed6Fiction
+Received message count: 0 From pipe/tmp/processed6Satire
+Received message count: 0 From pipe/tmp/processed7Novel
+Received message count: 0 From pipe/tmp/processed7Philosophy
+Received message count: 0 From pipe/tmp/processed5Science
+Received message count: 0 From pipe/tmp/processed7Fiction
+Received message count: 0 From pipe/tmp/processed7Satire
+Received message count: 0 From pipe/tmp/processed6Textbook
+Received message count: 0 From pipe/tmp/processed8Philosophy
+Received message count: 1 From pipe/tmp/processed7History
+Received message count: 0 From pipe/tmp/processed8Novel
+Received message count: 0 From pipe/tmp/processed6Science
+Received message count: 0 From pipe/tmp/processed9Philosophy
+Received message count: 1 From pipe/tmp/processed8History
+Received message count: 0 From pipe/tmp/processed8Fiction
+Received message count: 0 From pipe/tmp/processed8Satire
+Received message count: 0 From pipe/tmp/processed7Textbook
+Received message count: 0 From pipe/tmp/processed9Fiction
+Received message count: 0 From pipe/tmp/processed10Philosophy
+Received message count: 0 From pipe/tmp/processed9Novel
+Received message count: 0 From pipe/tmp/processed7Science
+Received message count: 0 From pipe/tmp/processed9Satire
+Received message count: 1 From pipe/tmp/processed9History
+Received message count: 0 From pipe/tmp/processed10Fiction
+Received message count: 0 From pipe/tmp/processed10Novel
+Received message count: 0 From pipe/tmp/processed11Philosophy
+Received message count: 0 From pipe/tmp/processed8Science
+Received message count: 0 From pipe/tmp/processed11Novel
+Received message count: 0 From pipe/tmp/processed12Philosophy
+Received message count: 0 From pipe/tmp/processed10Satire
+Received message count: 0 From pipe/tmp/processed8Textbook
+Received message count: 0 From pipe/tmp/processed12Novel
+Received message count: 1 From pipe/tmp/processed10History
+Received message count: 0 From pipe/tmp/processed11Fiction
+Received message count: 0 From pipe/tmp/processed13Philosophy
+Received message count: 0 From pipe/tmp/processed9Textbook
+Received message count: 1 From pipe/tmp/processed11History
+Received message count: 0 From pipe/tmp/processed12Fiction
+Received message count: 0 From pipe/tmp/processed13Novel
+Received message count: 0 From pipe/tmp/processed10Textbook
+Received message count: 0 From pipe/tmp/processed9Science
+Received message count: 0 From pipe/tmp/processed14Philosophy
+Received message count: 0 From pipe/tmp/processed13Fiction
+Received message count: 1 From pipe/tmp/processed12History
+Received message count: 0 From pipe/tmp/processed10Science
+Received message count: 0 From pipe/tmp/processed14Novel
+Received message count: 0 From pipe/tmp/processed15Philosophy
+Received message count: 0 From pipe/tmp/processed11Satire
+Received message count: 0 From pipe/tmp/processed11Textbook
+Received message count: 1 From pipe/tmp/processed13History
+Received message count: 0 From pipe/tmp/processed15Novel
+Received message count: 0 From pipe/tmp/processed11Science
+Received message count: 0 From pipe/tmp/processed16Philosophy
+Received message count: 0 From pipe/tmp/processed12Textbook
+Genre reducer final result Philosophy 0
+Received message count: 1 From pipe/tmp/processed14History
+Received message count: 0 From pipe/tmp/processed12Satire
+Received message count: 0 From pipe/tmp/processed16Novel
+Received message count: 0 From pipe/tmp/processed12Science
+Received message count: 0 From pipe/tmp/processed14Fiction
+Genre reducer final result Novel 0
+Received message count: 0 From pipe/tmp/processed13Textbook
+Received message count: 0 From pipe/tmp/processed13Satire
+Received message count: 1 From pipe/tmp/processed15History
+Received message count: 0 From pipe/tmp/processed15Fiction
+Received message count: 0 From pipe/tmp/processed14Textbook
+Received message count: 0 From pipe/tmp/processed13Science
+Received message count: 0 From pipe/tmp/processed14Satire
+Received message count: 1 From pipe/tmp/processed16History
+Genre reducer final result History 15
+Received message count: 0 From pipe/tmp/processed16Fiction
+Received message count: 0 From pipe/tmp/processed15Textbook
+Genre reducer final result Fiction 2
+Received message count: 0 From pipe/tmp/processed14Science
+Received message count: 0 From pipe/tmp/processed15Satire
+Received message count: 0 From pipe/tmp/processed16Textbook
+Received message count: 0 From pipe/tmp/processed15Science
+Genre reducer final result Textbook 0
+Received message count: 0 From pipe/tmp/processed16Satire
+Genre reducer final result Satire 0
+Received message count: 0 From pipe/tmp/processed16Science
+Genre reducer final result Science 0

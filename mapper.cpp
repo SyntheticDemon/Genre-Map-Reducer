@@ -36,7 +36,7 @@ std::map<string, int> return_counts(vector<vector<string>> file_contents, vector
     {
         for (int j = 1; j < file_contents[i].size(); j++)
         {
-            cout << file_contents[i][0] <<" " << file_contents[i][j] << endl;
+            // cout << file_contents[i][0] <<" " << file_contents[i][j] << endl;
             auto it = counts.find(file_contents[i][j]);
             it->second++;
             
