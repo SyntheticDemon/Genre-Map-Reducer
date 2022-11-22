@@ -105,7 +105,7 @@ int main(int argsc, char *argv[])
                 string message = form_mapping_message(genres, i, file_directory);
                 write(pipe_util[WRITE], message.c_str(), message.size());
                 close(pipe_util[READ]);
-                wait(&status);
+                // wait(&status);
             }
         }
     }

@@ -41,7 +41,7 @@ int main(int argc, char *argv[])
     string pipe_name = "/tmp/processed";
     int status;
     vector<int> received_count;
-    for (int i = 1; i < file_count; i++)
+    for (int i = 1; i <= file_count; i++)
     {
         int status;
         int pipe_util[2];
@@ -63,7 +63,7 @@ int main(int argc, char *argv[])
             wait(&status);
             char buffer[80];
             read(pipe_util[READ], buffer, sizeof(buffer));
-            // cout << "Received count from reduce communicator " << buffer << endl;
+            // cout << "Received count from reduce communicator " << buffer << genre << endl;
             received_count.push_back(atoi(buffer));
             close(write_fd);
         }

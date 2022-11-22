@@ -26,7 +26,6 @@ int main(int argc, char *argv[])
     int fd;
     string file_path(argv[1]);
     char buffer[CHAR_BUFFER_LENGTH];
-    // cout << "Mapper communicator received arguments : " << count << " " << file_path << endl;
     int fd1;
     mkfifo(file_path.c_str(), 0666);
     fd1 = open(file_path.c_str(), O_WRONLY);

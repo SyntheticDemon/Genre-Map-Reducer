@@ -36,8 +36,10 @@ std::map<string, int> return_counts(vector<vector<string>> file_contents, vector
     {
         for (int j = 1; j < file_contents[i].size(); j++)
         {
+            cout << file_contents[i][0] <<" " << file_contents[i][j] << endl;
             auto it = counts.find(file_contents[i][j]);
             it->second++;
+            
         }
     }
     return counts;
@@ -47,6 +49,7 @@ void dump_genres_to_respective_files(string file_no, vector<vector<string>> file
 {
     string processed = "/tmp/processed";
     map<string, int> counts = return_counts(file_contents, genres);
+    
     int status;
     int pipe_util[2];
     int ret_value = pipe(pipe_util);
@@ -60,7 +63,7 @@ void dump_genres_to_respective_files(string file_no, vector<vector<string>> file
             string temp = processed;
             temp.append(file_no);
             temp.append(genre);
-            // cout << "Calling the map communicator with arguments " << count << " " << temp << endl;
+            cout << "Calling the map communicator with arguments " << count << " " << temp << endl;
             execl("./map_communicator", to_string(count).c_str(), temp.c_str(), (char *)0);
             exit(0);
         }
@@ -89,7 +92,7 @@ int main(int argc, char *argv[])
         genres.push_back(results[i]);
     }
 
-    // cout << "Reading file no : " << file_no << " Where to read :" << where_to_read << endl;
+    cout << "Reading file no : " << file_no << " Where to read :" << where_to_read << endl;
     ifstream input_file;
 
     input_file.open(where_to_read);

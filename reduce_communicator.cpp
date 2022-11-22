@@ -24,15 +24,15 @@ int main(int argc, char *argv[])
     int read_fd = atoi(argv[0]);
     int write_fd = atoi(argv[1]);
     string file_path(argv[2]);
-    // cout << "Reducer Communicator received file descritors "
-        //  << read_fd << " " << write_fd << " " << file_path << " " << endl;
+    cout << "Reducer Communicator received file descritors "
+         << read_fd << " " << write_fd << " " << file_path << " " << endl;
     mkfifo(file_path.c_str(), 0666);
     while (1)
     {
         char buffer[80] = {0};
         fd = open(file_path.c_str(), O_RDONLY);
         read(fd, buffer, sizeof(buffer));
-        // cout << "Received message buffer" << endl;
+        cout << "Received message count: "<< buffer << " " << "From pipe"<<  file_path<< endl;
         write(write_fd, buffer ,sizeof(buffer));
         close(fd);
         break;
